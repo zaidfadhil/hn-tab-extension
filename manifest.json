@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Hacker News Tab",
+  "version": "1.0.0",
+  "description": "Displays Hacker News on every new tab",
+  "author": "Zaid Fadhil",
+  "icons": {
+    "16": "./assets/icon.png",
+    "48": "./assets/icon.png",
+    "96": "./assets/icon.png",
+    "128": "./assets/icon.png",
+    "256": "./assets/icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "icon.png"
+    },
+    "default_title": "Hacker News Tab"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    "index.html",
+    "styles/*",
+    "scripts/*"
+  ]
+}

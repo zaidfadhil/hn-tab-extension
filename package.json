@@ -1,0 +1,15 @@
+{
+  "name": "hn-tab-extension",
+  "version": "1.0.0",
+  "description": "Displays Hacker News on every new tab",
+  "main": "index.js",
+  "scripts": {
+    "start:firefox": "web-ext run",
+    "build:firefox": "web-ext build --overwrite-dest --artifacts-dir build/firefox"
+  },
+  "author": "Zaid Fadhil",
+  "license": "MIT",
+  "devDependencies": {
+    "web-ext": "^7.6.2"
+  }
+}
