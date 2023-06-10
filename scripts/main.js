@@ -42,14 +42,32 @@ window.addEventListener('load', async function () {
 });
 
 const dispalyData = (item) => {
+  // using Elements instead of innerHTML to pass firefox plugin checks
+
   const newsList = document.getElementById('news-list');
   const listItem = document.createElement('li');
-  listItem.innerHTML = `
-    <a href="${item.url}" class="title">${item.title}</a>
-    <div class="details">
-      <span class="score">[${item.score}]</span>
-      <span class="author">by ${item.by}</span>
-    </div>
-  `;
+  
+  const link = document.createElement('a');
+  link.href = item.url;
+  link.classList.add('title');
+  link.textContent = item.title;
+  
+  const details = document.createElement('div');
+  details.classList.add('details');
+  
+  const scoreSpan = document.createElement('span');
+  scoreSpan.classList.add('score');
+  scoreSpan.textContent = `[${item.score}]`;
+  
+  const authorSpan = document.createElement('span');
+  authorSpan.classList.add('author');
+  authorSpan.textContent = `by ${item.by}`;
+  
+  details.appendChild(scoreSpan);
+  details.appendChild(authorSpan);
+  
+  listItem.appendChild(link);
+  listItem.appendChild(details);
+  
   newsList.appendChild(listItem);
 }
