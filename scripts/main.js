@@ -1,3 +1,11 @@
+
+/* 
+  TODO:
+
+  - add fetch timeout 
+  - move `JSON.parse(localStorage.getItem(cacheKey));` under try/catch
+*/
+
 window.addEventListener('load', async function () {
   const cacheKey = 'hntabCache';
   const cacheExpiration = 60 * 60 * 1000; // 1 hour in milliseconds
@@ -5,7 +13,7 @@ window.addEventListener('load', async function () {
   const cachedData = JSON.parse(localStorage.getItem(cacheKey));
 
   if (cachedData && currentTime - cachedData.timestamp < cacheExpiration) {
-    cachedData.newsItems.forEach(item => {
+    cachedData.items.forEach(item => {
       dispalyData(item)
     });
   } else {
@@ -15,20 +23,18 @@ window.addEventListener('load', async function () {
       var list = await listRes.json();
       list = list.slice(0, 30)
 
-      const items = []
-      for (i in list) {
-        var id = list[i]
-        const itemRes = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
-        const item = await itemRes.json()
-        dispalyData(item)
-        items.push(item)
-      }
+      const promises = list.map(id => fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(response => response.json()));
+      await Promise.all(promises).then(items => {
+        items.forEach(item => {
+          dispalyData(item)
+        });
 
-      const cacheData = {
-        timestamp: currentTime,
-        newsItems: items
-      };
-      localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+        const cacheData = {
+          timestamp: currentTime,
+          items
+        };
+        localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+      })
     } catch (e) {
       console.error(e)
     }
