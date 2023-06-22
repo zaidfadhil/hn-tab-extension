@@ -29,11 +29,8 @@ jobs:
       - name: Run build
         run: npm run build:firefox
 
-      - name: Zip extensions
-        run: zip extensions.zip ./build -r
-
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: extensions.zip
-          path: extensions.zip
+          name: build
+          path: build/
