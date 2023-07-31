@@ -1,6 +1,6 @@
 {
   "name": "hn-tab-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays Hacker News on every new tab",
   "main": "index.js",
   "scripts": {

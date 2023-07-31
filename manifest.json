@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Hacker News Tab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays Hacker News on every new tab",
   "author": "Zaid Fadhil",
   "icons": {

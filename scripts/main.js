@@ -48,7 +48,7 @@ const dispalyData = (item) => {
   const listItem = document.createElement('li');
   
   const link = document.createElement('a');
-  link.href = item.url;
+  link.href = item.url || `https://news.ycombinator.com/item?id=${item.id}`;
   link.classList.add('title');
   link.textContent = item.title;
   
