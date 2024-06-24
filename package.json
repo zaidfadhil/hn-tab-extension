@@ -1,6 +1,6 @@
 {
   "name": "hn-tab-extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Displays Hacker News on every new tab",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "Zaid Fadhil",
   "license": "MIT",
   "devDependencies": {
-    "web-ext": "^7.6.2"
+    "web-ext": "^8.2.0"
   }
 }
